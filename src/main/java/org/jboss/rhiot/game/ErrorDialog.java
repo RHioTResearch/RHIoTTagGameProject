@@ -11,18 +11,19 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 
 /**
- * Created by starksm on 6/14/16.
+ * Display
  */
 public class ErrorDialog {
 
     public static void displayError(String title, String header, String content, Exception ex) {
-        Platform.runLater(() -> doDisplay(title, header, content, ex));
+        Platform.runLater(() -> displayErrorDirect(title, header, content, ex));
     }
-    private static void doDisplay(String title, String header, String content, Exception ex) {
+    public static void displayErrorDirect(String title, String header, String content, Exception ex) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(title);
         alert.setHeaderText(header);
         alert.setContentText(content);
+        alert.getDialogPane().setPrefSize(640, 320);
 
         // Create expandable Exception.
         StringWriter sw = new StringWriter();
