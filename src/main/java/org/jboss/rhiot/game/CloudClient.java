@@ -32,8 +32,8 @@ import org.jboss.rhiot.services.fsm.GameStateMachine;
 public class CloudClient implements EdcCallbackHandler {
     private static final Logger log = Logger.getLogger(CloudClient.class);
 
-    // DO NOT CHANGE THESE. See the
-    private static final String GW_IP_BASE   = "192.168.1.";
+    // DO NOT CHANGE THESE. See the CodeSourceTODOs.java file
+    private static final String GW_IP_BASE   = "192.168.2.";
     private static final String GW_ID        = "DN2016-GW"+ CodeSourceTODOs.MY_GW_NO;
     private static final String ACCOUNT_NAME = "Red-Hat";
     private static final String ASSET_ID     = GW_ID+"-client-"+ CodeSourceTODOs.MY_TAG_NO;
@@ -44,7 +44,7 @@ public class CloudClient implements EdcCallbackHandler {
 
     private EdcCloudClient edcCloudClient;
     private ICloudListener listener;
-    /** Synchornization latch to allow client startup to wait for ack of topic subscriptions */
+    /** Synchronization latch to allow client startup to wait for ack of topic subscriptions */
     private CountDownLatch subConfirmLatch;
 
     /**
@@ -54,8 +54,7 @@ public class CloudClient implements EdcCallbackHandler {
     public static String calcGWIP() {
         int subnet = 100 + CodeSourceTODOs.MY_GW_NO;
         String gwIP = GW_IP_BASE + subnet;
-        //return gwIP;
-        return "192.168.1.104";
+        return gwIP;
     }
     public static boolean isTagRegistered(String tagAddress) {
         return false;
