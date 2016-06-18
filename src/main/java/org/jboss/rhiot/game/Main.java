@@ -18,6 +18,10 @@ public class Main extends Application
 {
     private MainController controller;
 
+    public static void main(String[] args) {
+        launch(args);
+    }
+
     @Override
     public void start(Stage primaryStage) throws IOException {
         primaryStage.setTitle("Shoot the RHIoTTag!");
