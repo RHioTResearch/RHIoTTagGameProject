@@ -1,14 +1,17 @@
 package org.jboss.rhiot.game;
 
 
+import java.lang.invoke.MethodHandleInfo;
+import java.lang.reflect.Method;
 import java.time.Duration;
 import java.util.Date;
+import java.util.function.Function;
+import java.util.function.UnaryOperator;
 
 import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.ChoiceBox;
@@ -58,7 +61,6 @@ public class MainController implements ICloudListener {
     private Canvas hintCanvas;
     private HintAnimation hintAnimation;
     private AnimationTimer shotAnimation;
-    private WritableImage savedImage;
     private CloudClient cloudClient;
     private Image redTarget;
     private Image yellowTarget;
@@ -155,6 +157,26 @@ public class MainController implements ICloudListener {
 
     @FXML
     private void initialize() {
+        // Validate the CodeSourceTOOOs have been completed
+        Runnable checks[] = {ValidateTODOs::validateStep1, ValidateTODOs::validateStep2, ValidateTODOs::validateStep3,
+                ValidateTODOs::validateStep4, ValidateTODOs::validateStep5, ValidateTODOs::validateStep6,
+                ValidateTODOs::validateStep7, ValidateTODOs::validateStep8
+        };
+        for(int n = 0; n < checks.length; n ++) {
+            Runnable check = checks[n];
+            try {
+                check.run();
+                log.info("Passed validation for step: "+(n+1));
+            } catch (Exception e) {
+                String title = String.format("Step %d Incomplete", n+1);
+                String header = String.format("CodeSourceTOOOs step %d is incomplete", n+1);
+                String msg = String.format("See item %d. in the CodeSourceTODOs.java file", n+1);
+                ErrorDialog.displayErrorDirect(title, header, msg, e);
+                e.printStackTrace();
+                System.exit(n);
+            }
+        }
+
         stateLabel.setText("Idle");
         shotsLeftLabel.setText("10");
         hitCanvas.setId("HitCanvas");
