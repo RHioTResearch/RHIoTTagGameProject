@@ -24,7 +24,7 @@ public class Main extends Application
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        primaryStage.setTitle("Shoot the RHIoTTag!");
+        primaryStage.setTitle(String.format("Shoot the RHIoTTag! - [%s/%s]", CodeSourceTODOs.MY_GW_NO, CodeSourceTODOs.MY_TAG_ADDRESS));
         URL fxml = getClass().getResource("main.fxml");
         FXMLLoader loader = new FXMLLoader(fxml);
         Parent root = loader.load();
