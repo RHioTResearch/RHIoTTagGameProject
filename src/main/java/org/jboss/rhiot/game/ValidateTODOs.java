@@ -25,6 +25,11 @@ public class ValidateTODOs {
     }
 
     public static void validateStep4() {
+        if(CodeSourceTODOs.PASSWORD.equals("CHANGEME"))
+            throw new IllegalStateException("CodeSourceTODOs.PASSWORD has not been configured correctly");
+    }
+
+    public static void validateStep5() {
         String myAddress = CodeSourceTODOs.MY_TAG_ADDRESS;
         String topic = CodeSourceTODOs.getSubscriptionTopic("");
         String suffix = "/data/"+myAddress;
@@ -35,7 +40,7 @@ public class ValidateTODOs {
     /**
      *
      */
-    public static void validateStep5() {
+    public static void validateStep6() {
         EdcPayload test = new EdcPayload();
         test.addMetric(IRHIoTTagScanner.TAG_TEMP, 100f);
         test.addMetric(IRHIoTTagScanner.TAG_KEYS, RHIoTTag.KeyState.LEFT.ordinal());
@@ -53,7 +58,7 @@ public class ValidateTODOs {
      * @see CodeSourceTODOs#extractPrevState(EdcPayload)
      * @see CodeSourceTODOs#extractState(EdcPayload)
      */
-    public static void validateStep6() {
+    public static void validateStep7() {
         EdcPayload test = new EdcPayload();
         test.addMetric(IRHIoTTagScanner.TAG_NEW_STATE, GameStateMachine.GameState.GAMEOVER.name());
         test.addMetric(IRHIoTTagScanner.TAG_PREV_STATE, GameStateMachine.GameState.SHOOTING.name());
@@ -87,7 +92,7 @@ public class ValidateTODOs {
      * @see CodeSourceTODOs#extractShootingWindowTimeLeft(EdcPayload)
      * @see CodeSourceTODOs#extractShotsLeft(EdcPayload)
      */
-    public static void validateStep7() {
+    public static void validateStep8() {
         EdcPayload test = new EdcPayload();
         test.addMetric(IRHIoTTagScanner.TAG_GAME_TIME_LEFT, 600);
         test.addMetric(IRHIoTTagScanner.TAG_GAME_SCORE, 2500);
@@ -111,7 +116,7 @@ public class ValidateTODOs {
      * @see CodeSourceTODOs#extractHitDistance(EdcPayload)
      * @see CodeSourceTODOs#extractHitScore(EdcPayload)
      */
-    public static void validateStep8() {
+    public static void validateStep9() {
         EdcPayload test = new EdcPayload();
         test.addMetric(IRHIoTTagScanner.TAG_HIT_SCORE, 900);
         test.addMetric(IRHIoTTagScanner.TAG_HIT_RINGS_OFF_CENTER, 4);

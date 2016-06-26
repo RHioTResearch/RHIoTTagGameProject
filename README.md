@@ -34,7 +34,6 @@ The series of TODOs that you need to perform to complete the integration with th
 You need to assign the MY_TAG_NO variable to the tag number assigned to you. There are 8 tags at each table, and each box has the BLE address of the RHIoTTag as well as the tag number. In the image shown above, the tag number is 4. Set MY_TAG_NO to the value for your tag.
 
 
-
 ### Step 2, set CodeSourceTODOs.MY_GW_NO
 
 You need to assign the MY_GW_NO value to the gateway number at your table. This ensures you are filtering your cloud broker subscription to messages published by your table gateway. You will receive no messages if this is not set correctly.
@@ -43,7 +42,10 @@ You need to assign the MY_GW_NO value to the gateway number at your table. This 
 
 You need to assign your MY_TAG_ADDRESS to the BLE address printed on you RHIoTTag box. This is required in order for the gateway at your table to accept the advertising events from your RHIoTTag for both publishing to the cloud broker as well as running the game state machine. In the previous example image, the address is A0:E6:F8:B7:0B:00
 
-### Step 4, complete CodeSourceTODOs.getSubscriptionTopic()
+### Step 4, set CodeSourceTODOs.PASSWORD
+You need to change the CodeSourceTODOs.PASSWORD to the password given on the table card as the Cloud password value. This is required for accessing the cloud message broker.
+
+### Step 5, complete CodeSourceTODOs.getSubscriptionTopic()
 
 Complete the getSubscriptionTopic to select the data topic for you RHIoTTag. From the overview slides, recall that each gateway publishes its messages for the RHIoTTags to a topic with a pattern:
 
@@ -55,7 +57,7 @@ The `{address}` value is the BLE address of the tag sending the data, so this ne
 
 The `getSubscriptionTopic(String topicRoot)` method is given the `Red-Hat/{gatewayID}/org.jboss.rhiot.services.RHIoTTagScanner/` portion of the topic name as the `topicRoot` parameter.
 
-### Step 5, Complete the first set of methods that extract the metrics for the tag data. 
+### Step 6, Complete the first set of methods that extract the metrics for the tag data. 
 
 This information provides feedback on the button press states of the tag as well as the light sensor reading.
 
@@ -63,7 +65,7 @@ This information provides feedback on the button press states of the tag as well
  * @see #extractKeyState(EdcPayload)
  * @see #extractLuxReading(EdcPayload)
 
-### Step 6, Complete the second set of methods that extract the metrics for the tag game state information.
+### Step 7, Complete the second set of methods that extract the metrics for the tag game state information.
 
 This information provides feeback about the game state machine and is only sent when there is a state change.
 
@@ -72,7 +74,7 @@ This information provides feeback about the game state machine and is only sent 
  * @see #extractState(EdcPayload)
 
 
-### Step 7, Complete the third set of methods that extract the game run information.
+### Step 8, Complete the third set of methods that extract the game run information.
 
 This information tells you how many shots are left, how much time is left in the shooting window and the game, as well as the score.
 
@@ -81,7 +83,7 @@ This information tells you how many shots are left, how much time is left in the
  * @see #extractShootingWindowTimeLeft(EdcPayload)
  * @see #extractShotsLeft(EdcPayload)
 
-### Step 8. Complete the fourth set of methods that extract the hit score and distance from center.
+### Step 9. Complete the fourth set of methods that extract the hit score and distance from center.
 
 This information tells you what score was assigned to a hit and how many rings from center it was.
 

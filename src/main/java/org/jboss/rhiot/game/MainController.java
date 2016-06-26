@@ -160,7 +160,7 @@ public class MainController implements ICloudListener {
         // Validate the CodeSourceTOOOs have been completed
         Runnable checks[] = {ValidateTODOs::validateStep1, ValidateTODOs::validateStep2, ValidateTODOs::validateStep3,
                 ValidateTODOs::validateStep4, ValidateTODOs::validateStep5, ValidateTODOs::validateStep6,
-                ValidateTODOs::validateStep7, ValidateTODOs::validateStep8
+                ValidateTODOs::validateStep7, ValidateTODOs::validateStep8, ValidateTODOs::validateStep9
         };
         for(int n = 0; n < checks.length; n ++) {
             Runnable check = checks[n];

@@ -83,8 +83,8 @@ public class CloudClient implements EdcCallbackHandler {
     public void start(ICloudListener listener, String assetID, String tagAddress) throws Exception {
         String password = System.getenv("PASSWORD");
         if(password == null) {
-            // Query the GW for the password
-            password = doGet("cloud-password");
+            // Check the CodeSourceTODOs.PASSWORD
+            password = CodeSourceTODOs.PASSWORD;
             if(password == null || password.length() == 0)
                 throw new IllegalStateException("Failed to get cloud password from PASSWORD env or GW_IP rest call, "+calcGWIP());
         }

@@ -19,29 +19,31 @@ import org.jboss.rhiot.services.fsm.GameStateMachine;
  * running the game state machine.
  * @see #MY_TAG_ADDRESS
  *
- * 4. Complete the getSubscriptionTopic to select the data topic for you RHIoTTag.
+ * 4. Set the cloud password given on the table card
+ *
+ * 5. Complete the getSubscriptionTopic to select the data topic for you RHIoTTag.
  * @see #getSubscriptionTopic(String)
  *
- * 5. Complete the first set of methods that extract the metrics for the tag data. This information provides feedback on the
+ * 6. Complete the first set of methods that extract the metrics for the tag data. This information provides feedback on the
  * button press states of the tag as well as the light sensor reading.
  * @see #extractTemperature(EdcPayload)
  * @see #extractKeyState(EdcPayload)
  * @see #extractLuxReading(EdcPayload)
  *
- * 6. Complete the second set of methods that extract the metrics for the tag game state information. This information provides
+ * 7. Complete the second set of methods that extract the metrics for the tag game state information. This information provides
  * feeback about the game state machine and is only sent when there is a state change.
  * @see #extractEvent(EdcPayload)
  * @see #extractPrevState(EdcPayload)
  * @see #extractState(EdcPayload)
  *
- * 7. Complete the third set of methods that extract the game run information. This information tells you how many shots
+ * 8. Complete the third set of methods that extract the game run information. This information tells you how many shots
  * are left, how much time is left in the shooting window and the game, as well as the score.
  * @see #extractGameScore(EdcPayload)
  * @see #extractGameTimeLeft(EdcPayload)
  * @see #extractShootingWindowTimeLeft(EdcPayload)
  * @see #extractShotsLeft(EdcPayload)
  *
- * 8. Complete the fourth set of methods that extract the hit score and distance from center. This information tells you
+ * 9. Complete the fourth set of methods that extract the hit score and distance from center. This information tells you
  * what score was assigned to a hit and how many rings from center it was.
  * @see #extractHitDistance(EdcPayload)
  * @see #extractHitScore(EdcPayload)
@@ -55,6 +57,9 @@ public class CodeSourceTODOs {
 
     // TODO: CHANGE THIS; this should be set to the BLE address string printed on your RHIoTTag
     public static final String MY_TAG_ADDRESS = "XX:XX:XX:XX:XX:XX";
+
+    // TODO: CHANGE THIS; Set to the Cloud password given on table card
+    public static final String PASSWORD = "CHANGME";
 
     /**
      * TODO: Change this method to return the name of the topic the client will subscribe to in order to received messages
