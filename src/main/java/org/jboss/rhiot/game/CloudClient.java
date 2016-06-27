@@ -37,7 +37,7 @@ public class CloudClient implements EdcCallbackHandler {
     private static final String GW_ID        = "DN2016-GW"+ CodeSourceTODOs.MY_GW_NO;
     private static final String ACCOUNT_NAME = "Red-Hat";
     private static final String ASSET_ID     = GW_ID+"-client-"+ CodeSourceTODOs.MY_TAG_NO;
-    private static final String BROKER_URL   = "mqtt://broker-sandbox.everyware-cloud.com:1883";
+    private static final String BROKER_URL   = "mqtt://broker-Red-Hat.everyware-cloud.com:1883/";
     private static final String USERNAME     = "s-stark";
     private static final String TOPIC_ROOT = GW_ID+"/org.jboss.rhiot.services.RHIoTTagScanner";
     private static final String CONTROL_TOPIC = "org.jboss.rhiot.services.RHIoTTagScanner/control";
