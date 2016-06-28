@@ -10,7 +10,7 @@
 
   <groupId>org.jboss.rhiot.game</groupId>
   <artifactId>rhiot-tag-game</artifactId>
-  <version>1.0.4</version>
+  <version>1.0.5</version>
 
   <name>RHIoTTag Game</name>
   <description>The RHIoTTag game project for the DevNation 2016 code starter</description>
