@@ -1,6 +1,6 @@
 # RHIoTTagGameProject
 
-This game application illustrates interacting with the RHIoTTag sensor package. You need to complete a few setup tasks to connect the client to the cloud broker, and extract the 
+This game application illustrates interacting with the RHIoTTag sensor package. You need to complete a few setup tasks to connect the client to the cloud broker, and extract the metric information from the broker messages the application receives.
 
 ## Step 0, Associate Your RHIoTTag with the Gateway
 Your RHIoTTag box has the BLE address and tag number for the table as shown in the following image:
@@ -12,7 +12,7 @@ Once you have the admin interface up, select the RHIoTTagConfig under the Servic
 
 ![image](src/main/resources/RHIoTTagConfig.png)
 
-In there, choose the field that corresponds to your tag number. For example, for the tag label above, you would use the gw.tag4 fields to enter the A0:E6:F8:B7:0B:00 address in the first field, and then whatever name you want associated with the tag in the second field.
+In there, choose the field that corresponds to your tag number. For example, for the tag label above, you would use the gw.tag8 fields to enter the A0:E6:F8:AE:FC:85 address in the first field, and then whatever name you want associated with the tag in the second field.
 
 After it is entered, click the Apply button to save the configuration. You will be prompted if you want to apply the change, say yes.
 
@@ -31,7 +31,7 @@ OR
 The series of TODOs that you need to perform to complete the integration with the cloud broker is located in the src/main/java/org/jboss/rhiot/game/CodeSourceTODOs.java file. The javadoc for the class describes the steps, but they are repeated here with additions where approriate.
 
 ### Step 1, set CodeSourceTODOs.MY_TAG_NO
-You need to assign the MY_TAG_NO variable to the tag number assigned to you. There are 8 tags at each table, and each box has the BLE address of the RHIoTTag as well as the tag number. In the image shown above, the tag number is 4. Set MY_TAG_NO to the value for your tag.
+You need to assign the MY_TAG_NO variable to the tag number assigned to you. There are 8-9 tags at each table, and each box has the BLE address of the RHIoTTag as well as the tag number. In the image shown above, the tag number is 8. Set MY_TAG_NO to the value for your tag.
 
 
 ### Step 2, set CodeSourceTODOs.MY_GW_NO
@@ -51,7 +51,7 @@ Complete the getSubscriptionTopic to select the data topic for you RHIoTTag. Fro
 
 `Red-Hat/{gatewayID}/org.jboss.rhiot.services.RHIoTTagScanner/data/{address}` 
 
-where `{gatewayID}` is the name assigned to your gateway. It is printed on the card next to the gateway and is of the form DN2016-GW{N} where N is [0..14].
+where `{gatewayID}` is the name assigned to your gateway. It is printed on the card next to the gateway and is of the form DN2016-GW{N} where N is [0..13].
 
 The `{address}` value is the BLE address of the tag sending the data, so this needs to match your tag's address.
 
@@ -59,7 +59,7 @@ The `getSubscriptionTopic(String topicRoot)` method is given the `Red-Hat/{gatew
 
 ### Step 6, Complete the first set of methods that extract the metrics for the tag data. 
 
-This information provides feedback on the button press states of the tag as well as the light sensor reading.
+This information provides feedback on the button press states of the tag as well as the light sensor reading. Refer to the presentation slides on the Metrics that are sent for the names to use. These names are also found in the org.jboss.rhiot.services.api.IRHIoTTagScanner interface as constants, and these are referened in the javadoc of the extract* methods.
 
  * @see #extractTemperature(EdcPayload)
  * @see #extractKeyState(EdcPayload)
@@ -98,7 +98,7 @@ Now make sure your RHIoTTag is broadcasting. You should see the green LED flashi
 
 ![image](src/main/resources/TagLED.gif)
 
-If you don't, make sure you have pulled the plastic tab out to expose the battery contacts. At this point if everything it hooked up correctly, you sill see the real time LUX value from the light sensor showing up in the bottom right of the UI in the LuxReading field.
+If you don't, make sure you have pulled the plastic tab out to expose the battery contacts. At this point if everything it hooked up correctly, you will see the real time LUX value from the light sensor showing up in the bottom right of the UI in the LuxReading field.
 
 Move the sensor around and cover the light sensor, expose the light sensor to you laptop screen, and hit it with the laser pointer to see how these affect the sensor reading.
 
@@ -124,6 +124,6 @@ When the shooting window expires, you will need to press the left button to repl
 
 Continue through the game states until the game expires, and then check your score against everyone else by checking out the game scoreboard application we will be running on the main projector.
 
-Play as many games as you like.
+Play as many games as you like. The running score board and top scores will be displayed on the scoreboard application shown on the main projector.
 
 You can also check out the HTML/JavaScript browser based version of the game UI. You will need to go through similar steps to configure it to receive and extract the message broker information.
