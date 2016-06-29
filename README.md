@@ -12,8 +12,9 @@ Once you have the admin interface up, select the RHIoTTagConfig under the Servic
 
 ![image](src/main/resources/RHIoTTagConfig.png)
 
-In there, choose the field that corresponds to your tag number. For example, for the tag label above, you would use the gw.tag8 fields to enter the A0:E6:F8:AE:FC:85 address in the first field, and then whatever name you want associated with the tag in the second field.
+NOTE: THIS STEP IS GOING TO REQUIRE COORDINATION AT YOUR TABLE!!! EACH PERSON NEEDS TO UPDATE THEIR TAG AND THEN SIGNAL THEIR COMPLETION SO THAT THE NEXT PERSON CAN TAKE THE UPDATE TOKEN. WHAT YOU DON'T WANT IS TO HAVE EACH OTHER OVERWRITING THE TAG ADDRESS TO NAME MAPPING.
 
+In there, choose the field that corresponds to your tag number. For example, for the tag label above, you would use the gw.tag8 fields to enter the A0:E6:F8:AE:FC:85 address in the first field, and then whatever name you want associated with the tag in the second field.  
 After it is entered, click the Apply button to save the configuration. You will be prompted if you want to apply the change, say yes.
 
 You can use wget or curl to query the RHIoTTagService to verify that it has applied the address to name mapping using a get on http://mygatewayip:8080/rhiot/tags. For example:
@@ -55,7 +56,7 @@ where `{gatewayID}` is the name assigned to your gateway. It is printed on the c
 
 The `{address}` value is the BLE address of the tag sending the data, so this needs to match your tag's address.
 
-The `getSubscriptionTopic(String topicRoot)` method is given the `Red-Hat/{gatewayID}/org.jboss.rhiot.services.RHIoTTagScanner/` portion of the topic name as the `topicRoot` parameter.
+The `getSubscriptionTopic(String topicRoot)` method is given the `Red-Hat/{gatewayID}/org.jboss.rhiot.services.RHIoTTagScanner` portion of the topic name as the `topicRoot` parameter.
 
 ### Step 6, Complete the first set of methods that extract the metrics for the tag data. 
 
