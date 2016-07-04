@@ -93,7 +93,9 @@ This information tells you what score was assigned to a hit and how many rings f
  
 
 # Play the Game
-At this point you should have the tag associated with the gateway and the game UI configured to receive the MQTT messages from the cloud broker, and have it extracting the message metrics for display in the UI.  Launch the game UI by running the org.jboss.rhiot.game.Main entry point.
+At this point you should have the tag associated with the gateway and the game UI configured to receive the MQTT messages from the cloud broker, and have it extracting the message metrics for display in the UI.  Launch the game UI by running the org.jboss.rhiot.game.Main entry point. This can be done from within your IDE, or by running the following maven command line:
+
+`mvn exec:java -Dexec.mainClass="org.jboss.rhiot.game.Main"`
 
 Now make sure your RHIoTTag is broadcasting. You should see the green LED flashing on the back of the tag as shown in this picture:
 
